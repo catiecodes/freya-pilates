@@ -15,9 +15,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-sm leading-relaxed">
-            Calistoga, California
-            <br />
-            Napa Valley
+            Greater Napa Valley, CA
           </p>
         </div>
 
@@ -30,7 +28,8 @@ export default function Footer() {
             {[
               { href: "/", label: "Home" },
               { href: "/about", label: "About" },
-              { href: "/blog", label: "Journal" },
+              { href: "/#testimonials", label: "Testimonials" },
+              { href: "/blog", label: "Blog" },
               { href: "/#contact", label: "Contact" },
             ].map((link) => (
               <Link
@@ -52,7 +51,7 @@ export default function Footer() {
           <div className="text-sm leading-relaxed space-y-1">
             <p>Solage, an Auberge Resort</p>
             <p>Calistoga Pilates</p>
-            <p className="mt-4">Calistoga, CA</p>
+            <p className="mt-4">Greater Napa Valley, CA</p>
           </div>
         </div>
       </div>

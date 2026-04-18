@@ -18,14 +18,34 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Freya Pilates | Calistoga, California",
+    default: "Freya Pilates | Calistoga & Napa Valley",
     template: "%s | Freya Pilates",
   },
   description:
-    "Pilates instruction with Freya Morgen in Calistoga, California. Private sessions, group classes, virtual training, and retreats in the Napa Valley.",
+    "Private Pilates instruction, curated retreats, and group classes with Freya Morgen in Calistoga and the Napa Valley. Reformer, Cadillac, Chair & Mat. Customized Pilates retreats at partner properties.",
+  keywords: [
+    "Pilates retreat Napa Valley",
+    "curated Pilates retreat California",
+    "private Pilates retreat Wine Country",
+    "Pilates instructor Calistoga",
+    "Pilates retreat partner properties",
+    "Napa Valley wellness retreat",
+    "private Pilates sessions Napa Valley",
+    "Reformer Pilates Calistoga",
+    "Pilates instructor Solage",
+    "customized Pilates retreat",
+  ],
+  metadataBase: new URL("https://freyapilates.com"),
   openGraph: {
     siteName: "Freya Pilates",
     type: "website",
+    locale: "en_US",
+    url: "https://freyapilates.com",
+    description:
+      "Private Pilates instruction and curated retreats with Freya Morgen in Calistoga and the Napa Valley.",
+  },
+  alternates: {
+    canonical: "https://freyapilates.com",
   },
 };
 
@@ -36,7 +56,7 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="min-h-screen flex flex-col antialiased">
+      <body className="min-h-screen flex flex-col antialiased" suppressHydrationWarning>
         <Nav />
         <main className="flex-1 pt-20">{children}</main>
         <Footer />

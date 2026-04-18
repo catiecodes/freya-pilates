@@ -1,8 +1,57 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Button from "@/components/Button";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import ContactForm from "@/components/ContactForm";
+import { createClient } from "@/lib/supabase/server";
+import type { Testimonial } from "@/lib/types";
+
+export const metadata: Metadata = {
+  title: "Freya Pilates | Calistoga & Napa Valley",
+  description:
+    "Private Pilates instruction, curated retreats at partner properties, and group classes with Freya Morgen in Calistoga and the Napa Valley. Reformer, Cadillac, Chair & Mat.",
+  alternates: {
+    canonical: "https://freyapilates.com",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Freya Pilates",
+  description:
+    "Private Pilates instruction, curated retreats, and group classes with Freya Morgen in Calistoga and the Napa Valley.",
+  url: "https://freyapilates.com",
+  telephone: "",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Calistoga",
+    addressRegion: "CA",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 38.579,
+    longitude: -122.579,
+  },
+  areaServed: [
+    { "@type": "City", name: "Calistoga" },
+    { "@type": "City", name: "Napa" },
+    { "@type": "AdministrativeArea", name: "Napa Valley" },
+  ],
+  priceRange: "$$",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Pilates Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Private & Duet Sessions" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Virtual Private Sessions" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Group Classes" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Customized Pilates Retreats at Partner Properties" } },
+    ],
+  },
+};
 
 const services = [
   {
@@ -31,32 +80,19 @@ const services = [
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Freya has guided me through a Pilates Reformer program, utilizing a gentle yet effective strength-training approach. This program has been instrumental in resolving years of sciatica pain, as well as addressing new issues related to a complete Achilles rupture. After consulting with orthopedic surgeons and pain specialists, I chose to pursue a less invasive path, and the results with Freya have been excellent.",
-    author: "Laura K.",
-  },
-  {
-    quote:
-      "I started Pilates after a back injury. I had tried Pilates many times but never made a connection, and then I met Freya. Pilates helped me to connect with my body — stand taller, move easier, all without discomfort. Freya helped me become stronger, more flexible, and love my workouts. I feel challenged every time I step into the studio.",
-    author: "Terry G.",
-  },
-  {
-    quote:
-      "Freya has been my instructor for about seven years. She is a fantastic instructor, blending different and challenging moves with more simple and classical moves in each workout. She is a solid judge of my current ability and also what I can build up to. I highly recommend practicing Pilates with Freya.",
-    author: "Allison F.",
-  },
-  {
-    quote:
-      "I have been taking Pilates classes and private lessons with Freya for nearly four years and her wealth of knowledge is astounding. She has a nearly infinite repertoire of exercises, a comprehensive understanding of anatomy and kinesiology, and the patience of a saint.",
-    author: "Claudia L.",
-  },
-];
-
-export default function HomePage() {
+export default async function HomePage() {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("testimonials")
+    .select("*")
+    .order("sort_order", { ascending: true });
+  const testimonials: Testimonial[] = data ?? [];
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="relative h-[90vh] min-h-[600px] flex items-center">
         <Image
@@ -126,7 +162,7 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="bg-cream py-24">
+      <section id="services" className="bg-cream py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-4 font-sans">
@@ -140,11 +176,6 @@ export default function HomePage() {
             {services.map((service) => (
               <ServiceCard key={service.title} {...service} />
             ))}
-          </div>
-          <div className="text-center mt-12">
-            <p className="text-sm text-charcoal-light italic font-serif">
-              Online scheduling with MindBody — coming soon.
-            </p>
           </div>
         </div>
       </section>
@@ -178,7 +209,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
+      <section id="testimonials" className="max-w-6xl mx-auto px-6 py-24">
         <div className="text-center mb-16">
           <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-4 font-sans">
             Client Stories
@@ -188,8 +219,17 @@ export default function HomePage() {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {testimonials.map((t) => (
-            <TestimonialCard key={t.author} quote={t.quote} author={t.author} />
+          {testimonials.map((t, i) => (
+            <div
+              key={t.id}
+              className={
+                testimonials.length % 2 !== 0 && i === testimonials.length - 1
+                  ? "md:col-span-2 md:max-w-[50%] md:mx-auto w-full"
+                  : ""
+              }
+            >
+              <TestimonialCard quote={t.quote} author={t.author} />
+            </div>
           ))}
         </div>
       </section>

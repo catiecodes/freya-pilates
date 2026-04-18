@@ -3,9 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { createClient } from "@/lib/supabase/client";
 import Button from "@/components/Button";
 import type { BlogPost } from "@/lib/types";
+
+const RichTextEditor = dynamic(() => import("./RichTextEditor"), { ssr: false });
 
 type Props = {
   post?: BlogPost;
@@ -150,16 +153,7 @@ export default function PostEditor({ post }: Props) {
           <label className="block text-[10px] tracking-[0.25em] uppercase text-charcoal-light mb-2 font-sans">
             Content <span className="text-gold">*</span>
           </label>
-          <textarea
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            rows={20}
-            className="w-full border border-cream-dark bg-white px-4 py-3 text-sm text-charcoal focus:outline-none focus:border-olive transition-colors resize-y font-sans leading-relaxed"
-            placeholder="Write your post content here. Basic HTML is supported (e.g. <p>, <strong>, <em>, <h2>, <ul>, <li>)."
-          />
-          <p className="text-[10px] text-charcoal-light mt-1.5">
-            Basic HTML supported: &lt;p&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;a&gt;
-          </p>
+          <RichTextEditor value={content} onChange={setContent} />
         </div>
 
         {error && <p className="text-sm text-red-500">{error}</p>}

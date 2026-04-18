@@ -3,9 +3,12 @@ import Image from "next/image";
 import Button from "@/components/Button";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Freya Morgen",
   description:
-    "Meet Freya Morgen — Pilates instructor based in Calistoga, California with over nine years of teaching experience at Solage and Calistoga Pilates.",
+    "Meet Freya Morgen — comprehensively certified Pilates instructor based in Calistoga, California. Trained by Carrie Macy Samper. Private sessions, group classes, and curated retreats in the Napa Valley.",
+  alternates: {
+    canonical: "https://freyapilates.com/about",
+  },
 };
 
 export default function AboutPage() {
@@ -72,7 +75,7 @@ export default function AboutPage() {
         </div>
 
         {/* Details Sidebar */}
-        <div className="space-y-10">
+        <div className="space-y-6">
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
               src="/fave5.jpg"
@@ -82,40 +85,55 @@ export default function AboutPage() {
             />
           </div>
 
-          <div className="bg-cream p-8 space-y-6">
-            <div>
-              <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
-                In Studio
+          {/* Two boxes side by side */}
+          <div className="grid grid-cols-2 gap-4">
+            {/* Certification — prominent left box */}
+            <div className="bg-charcoal p-6 space-y-3">
+              <p className="text-[10px] tracking-[0.3em] uppercase text-gold font-sans">
+                Certification
               </p>
-              <p className="text-sm text-charcoal-light">
-                Solage, an Auberge Resort
-                <br />
-                Calistoga Pilates
-                <br />
-                Calistoga, California
-              </p>
-            </div>
-            <div>
-              <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
-                Specialties
-              </p>
-              <p className="text-sm text-charcoal-light">
-                Reformer · Trapeze Table · Mat
-                <br />
-                Private & Duet Sessions
-                <br />
-                Virtual Training · Retreats
+              <p className="text-sm text-white/80 leading-relaxed">
+                Comprehensively certified in classical Pilates. Trained and
+                certified by Carrie Macy Samper, Master Trainer at Equinox New York.
               </p>
             </div>
-            <div>
-              <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
-                Experience
-              </p>
-              <p className="text-sm text-charcoal-light">
-                9+ years of teaching
-                <br />
-                All levels welcome
-              </p>
+
+            {/* Details — right box */}
+            <div className="bg-cream p-6 space-y-5">
+              <div>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
+                  In Studio
+                </p>
+                <p className="text-sm text-charcoal-light">
+                  Solage, an Auberge Resort
+                  <br />
+                  Calistoga Pilates
+                  <br />
+                  Calistoga, California
+                </p>
+              </div>
+              <div>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
+                  Specialties
+                </p>
+                <p className="text-sm text-charcoal-light">
+                  Reformer · Chair · Cadillac · Mat
+                  <br />
+                  Private & Duet Sessions
+                  <br />
+                  Virtual Training · Customized Retreats at Partner Properties
+                </p>
+              </div>
+              <div>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
+                  Experience
+                </p>
+                <p className="text-sm text-charcoal-light">
+                  9+ years of teaching
+                  <br />
+                  All levels welcome
+                </p>
+              </div>
             </div>
           </div>
         </div>

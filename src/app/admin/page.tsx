@@ -42,6 +42,9 @@ export default async function AdminPage() {
             >
               ← View Site
             </Link>
+            <Button href="/admin/testimonials" variant="outline">
+              Reviews
+            </Button>
             <Button href="/admin/new" variant="primary">
               New Post
             </Button>

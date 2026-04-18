@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-olive: #6B7A4F;
@@ -29,4 +30,34 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-cormorant), Georgia, serif;
+}
+
+/* Blog post table styles */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.prose th {
+  background-color: var(--color-cream);
+  border: 1px solid var(--color-cream-dark);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-charcoal-light);
+}
+
+.prose td {
+  border: 1px solid var(--color-cream-dark);
+  padding: 0.5rem 0.75rem;
+  color: var(--color-charcoal-light);
+}
+
+.prose tr:nth-child(even) td {
+  background-color: #fdfcf9;
 }

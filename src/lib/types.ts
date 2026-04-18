@@ -9,6 +9,14 @@ export type BlogPost = {
   updated_at: string;
 };
 
+export type Testimonial = {
+  id: string;
+  quote: string;
+  author: string;
+  sort_order: number;
+  created_at: string;
+};
+
 export type ContactSubmission = {
   id: string;
   name: string;

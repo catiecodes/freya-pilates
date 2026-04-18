@@ -6,7 +6,9 @@ import { useState } from "react";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/blog", label: "Journal" },
+  { href: "/#services", label: "Services" },
+  { href: "/#testimonials", label: "Testimonials" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Nav() {
@@ -36,13 +38,7 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          {/* MindBody Placeholder */}
-          <span
-            title="Online booking coming soon"
-            className="text-[11px] tracking-[0.2em] uppercase text-charcoal-light/40 cursor-not-allowed font-sans"
-          >
-            Book
-          </span>
+          {/* MindBody Placeholder — hidden until booking is ready */}
           <Link
             href="/#contact"
             className="text-[11px] tracking-[0.2em] uppercase bg-olive text-white px-5 py-2.5 hover:bg-olive-dark transition-colors duration-200 font-sans"
@@ -82,9 +78,6 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <span className="text-[11px] tracking-[0.2em] uppercase text-charcoal-light/40 cursor-not-allowed">
-            Book (Coming Soon)
-          </span>
           <Link
             href="/#contact"
             onClick={() => setMenuOpen(false)}
