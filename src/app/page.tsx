@@ -181,8 +181,8 @@ export default async function HomePage() {
       </section>
 
       {/* Studio Image Strip */}
-      <section className="grid grid-cols-1 md:grid-cols-3 h-[400px]">
-        <div className="relative overflow-hidden">
+      <section className="grid grid-cols-1 md:grid-cols-3 md:h-[400px]">
+        <div className="relative aspect-[4/3] md:aspect-auto md:h-full overflow-hidden">
           <Image
             src="/fav3.jpg"
             alt="Pilates reformer"
@@ -190,15 +190,15 @@ export default async function HomePage() {
             className="object-cover hover:scale-105 transition-transform duration-700"
           />
         </div>
-        <div className="relative overflow-hidden">
+        <div className="relative aspect-[4/3] md:aspect-auto md:h-full overflow-hidden">
           <Image
-            src="/fave5.jpg"
-            alt="Pilates movement"
+            src="/group-photo.jpg"
+            alt="Pilates group class"
             fill
             className="object-cover hover:scale-105 transition-transform duration-700"
           />
         </div>
-        <div className="relative overflow-hidden">
+        <div className="relative aspect-[4/3] md:aspect-auto md:h-full overflow-hidden">
           <Image
             src="/fav4.jpg"
             alt="Pilates instruction"
@@ -215,7 +215,7 @@ export default async function HomePage() {
             Client Stories
           </p>
           <h2 className="font-serif text-5xl font-light text-charcoal">
-            Transformations
+            Testimonials
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
