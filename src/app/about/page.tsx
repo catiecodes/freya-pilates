@@ -35,6 +35,17 @@ export default function AboutPage() {
       {/* Bio */}
       <section className="max-w-6xl mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         <div>
+          {/* Certification */}
+          <div className="mb-8">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
+              Certification
+            </p>
+            <p className="text-sm text-charcoal-light leading-relaxed">
+              Comprehensively certified in classical Pilates. Trained and
+              certified by Carrie Macy Samper, Master Trainer at Equinox New York.
+            </p>
+          </div>
+
           <p className="text-[10px] tracking-[0.4em] uppercase text-gold mb-6 font-sans">
             Her Story
           </p>
@@ -74,7 +85,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Details Sidebar */}
+        {/* Photo + Details */}
         <div className="space-y-6">
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
@@ -85,55 +96,38 @@ export default function AboutPage() {
             />
           </div>
 
-          {/* Two boxes side by side */}
-          <div className="grid grid-cols-2 gap-4">
-            {/* Certification — prominent left box */}
-            <div className="bg-charcoal p-6 space-y-3">
-              <p className="text-[10px] tracking-[0.3em] uppercase text-gold font-sans">
-                Certification
+          <div className="bg-cream p-6 space-y-5">
+            <div>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
+                In Studio
               </p>
-              <p className="text-sm text-white/80 leading-relaxed">
-                Comprehensively certified in classical Pilates. Trained and
-                certified by Carrie Macy Samper, Master Trainer at Equinox New York.
+              <p className="text-sm text-charcoal-light">
+                Solage, an Auberge Resort · Calistoga Pilates
+                <br />
+                Calistoga, California
               </p>
             </div>
-
-            {/* Details — right box */}
-            <div className="bg-cream p-6 space-y-5">
-              <div>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
-                  In Studio
-                </p>
-                <p className="text-sm text-charcoal-light">
-                  Solage, an Auberge Resort
-                  <br />
-                  Calistoga Pilates
-                  <br />
-                  Calistoga, California
-                </p>
-              </div>
-              <div>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
-                  Specialties
-                </p>
-                <p className="text-sm text-charcoal-light">
-                  Reformer · Chair · Cadillac · Mat
-                  <br />
-                  Private & Duet Sessions
-                  <br />
-                  Virtual Training · Customized Retreats at Partner Properties
-                </p>
-              </div>
-              <div>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
-                  Experience
-                </p>
-                <p className="text-sm text-charcoal-light">
-                  9+ years of teaching
-                  <br />
-                  All levels welcome
-                </p>
-              </div>
+            <div>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
+                Specialties
+              </p>
+              <p className="text-sm text-charcoal-light">
+                Reformer · Chair · Cadillac · Mat
+                <br />
+                Private & Duet Sessions
+                <br />
+                Virtual Training · Customized Retreats at Partner Properties
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-gold mb-2 font-sans">
+                Experience
+              </p>
+              <p className="text-sm text-charcoal-light">
+                9+ years of teaching
+                <br />
+                All levels welcome
+              </p>
             </div>
           </div>
         </div>

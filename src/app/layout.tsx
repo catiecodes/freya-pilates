@@ -43,6 +43,18 @@ export const metadata: Metadata = {
     url: "https://freyapilates.com",
     description:
       "Private Pilates instruction and curated retreats with Freya Morgen in Calistoga and the Napa Valley.",
+    images: [
+      {
+        url: "/banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Freya Pilates",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/banner.jpg"],
   },
   alternates: {
     canonical: "https://freyapilates.com",
